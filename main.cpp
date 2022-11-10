@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 void printMenu()
 {
@@ -96,20 +97,44 @@ void processUserOption(int userOption)
 int main()
 {
     //Representing one entry in the order book
-    double price = 5319.450228;
-    double amount = 0.00020075;
-    std::string timestamp{"2020/03/17 17:01:24.884492"};
-    std::string product{"BTC/USDT"};
-    std::string orderType{"bid"};
+    // double price = 5319.450228;
+    // double amount = 0.00020075;
+    // std::string timestamp{"2020/03/17 17:01:24.884492"};
+    // std::string product{"BTC/USDT"};
+    enum class OrderBookType{bid, ask};
 
-    while(true)
-    {
-        printMenu();
+    //Representing multiple order book entries using vectors
+    std::vector<double> prices;
+    std::vector<double> amounts;
+    std::vector<std::string> timestamps;
+    std::vector<std::string> products;
+    std::vector<OrderBookType> orderTypes;
+    
+    //Add data to vectors using push_back
+    prices.push_back(500.01);
+    amounts.push_back(0.001);
+    timestamps.push_back("2020/03/17 17:01:24.88449");
+    products.push_back("BTC/USDT");
+    orderTypes.push_back(OrderBookType::bid);
 
-        int userOption = getUserOption();
+    prices.push_back(1000.01);
+    amounts.push_back(0.001);
+    timestamps.push_back("2020/03/17 17:01:24.88449");
+    products.push_back("BTC/USDT");
+    orderTypes.push_back(OrderBookType::ask);
 
-        processUserOption(userOption);
-    }
+    //Accessing data in the vectors
+    std::cout <<"prices: " << prices[0] << std::endl;
+    std::cout <<"prices: " << prices[1] << std::endl;
+
+    // while(true)
+    // {
+    //     printMenu();
+
+    //     int userOption = getUserOption();
+
+    //     processUserOption(userOption);
+    // }
     
     return 0;
     
