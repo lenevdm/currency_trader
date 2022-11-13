@@ -8,17 +8,19 @@ class OrderBookEntry
 {
     public:
         //Constructor
-        OrderBookEntry( double price,
-                        double amount,
-                        std::string timestamp,
-                        std::string product,
-                        OrderBookType orderType)
+        OrderBookEntry( double _price,
+                        double _amount,
+                        std::string _timestamp,
+                        std::string _product,
+                        OrderBookType _orderType)
+        // Initialisation list
+        : price(_price), 
+        amount(_amount), 
+        timestamp(_timestamp),
+        product(_product),
+        orderType(_orderType)
         {
-            this->price = price;
-            this->amount = amount;
-            this->timestamp = timestamp;
-            this->product = product;
-            this->orderType = orderType;
+            
         }
 
         double price;
