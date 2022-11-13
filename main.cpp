@@ -7,6 +7,20 @@ enum class OrderBookType{bid, ask};
 class OrderBookEntry
 {
     public:
+        //Constructor
+        OrderBookEntry( double price,
+                        double amount,
+                        std::string timestamp,
+                        std::string product,
+                        OrderBookType orderType)
+        {
+            this->price = price;
+            this->amount = amount;
+            this->timestamp = timestamp;
+            this->product = product;
+            this->orderType = orderType;
+        }
+
         double price;
         double amount;
         std::string timestamp;
@@ -115,13 +129,8 @@ int main()
     // }
     // return 0;
 
-    OrderBookEntry order1;
-    order1.price = 10000;
-    order1.amount = 0.002;
-    order1.timestamp = "17:01:24.884492";
-    order1.product = "BTC/USDT";
-    order1.orderType = OrderBookType::bid;
-
+    OrderBookEntry order1(1000, 0.02, "17:01:24.884492","BTC/USDT", OrderBookType::bid);
+    
     std::cout << "The price is " << order1.price << std::endl;
 
 
