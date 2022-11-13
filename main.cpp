@@ -146,9 +146,27 @@ int main()
                         "BTC/USDT", 
                         OrderBookType::ask)
                     );
-    
-    std::cout << "The price is " << orders[1].price << std::endl;
 
+
+    //Iterator style
+    for (OrderBookEntry& order : orders)
+    {
+        std::cout << "The price is " << order.price << std::endl;
+    }
+
+    //Array style
+    for (unsigned int i = 0; i < orders.size(); ++i)
+    {
+        std::cout << "The price is " << orders[i].price << std::endl;
+
+    }
+
+    //Object style
+    for (unsigned int i = 0; i < orders.size(); ++i)
+    {
+        std::cout << "The price is " << orders.at(i).price << std::endl;
+
+    }
 
 }
 
