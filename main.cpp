@@ -131,9 +131,23 @@ int main()
     // }
     // return 0;
 
-    OrderBookEntry order1(1000, 0.02, "17:01:24.884492","BTC/USDT", OrderBookType::bid);
+    std::vector<OrderBookEntry> orders;
+        
+    orders.push_back(   OrderBookEntry(1000, 
+                        0.02, 
+                        "17:01:24.884492",
+                        "BTC/USDT", 
+                        OrderBookType::bid)
+                    );
+
+    orders.push_back(   OrderBookEntry(2000, 
+                        0.04, 
+                        "17:01:24.884492",
+                        "BTC/USDT", 
+                        OrderBookType::ask)
+                    );
     
-    std::cout << "The price is " << order1.price << std::endl;
+    std::cout << "The price is " << orders[1].price << std::endl;
 
 
 }
