@@ -2,6 +2,17 @@
 #include <string>
 #include <vector>
 
+enum class OrderBookType{bid, ask};
+
+class OrderBookEntry {
+    public:
+        double price;
+        double amount;
+        std::string timestamp;
+        std::string product;
+        OrderBookType orderType;
+};
+
 void printMenu()
 {
     // 1 Print help
@@ -96,47 +107,48 @@ void processUserOption(int userOption)
 
 int main()
 {
-    //Representing one entry in the order book
-    // double price = 5319.450228;
-    // double amount = 0.00020075;
-    // std::string timestamp{"2020/03/17 17:01:24.884492"};
-    // std::string product{"BTC/USDT"};
-    enum class OrderBookType{bid, ask};
-
-    //Representing multiple order book entries using vectors
-    std::vector<double> prices;
-    std::vector<double> amounts;
-    std::vector<std::string> timestamps;
-    std::vector<std::string> products;
-    std::vector<OrderBookType> orderTypes;
+//     //Representing multiple order book entries using vectors
+//     std::vector<double> prices;
+//     std::vector<double> amounts;
+//     std::vector<std::string> timestamps;
+//     std::vector<std::string> products;
+//     std::vector<OrderBookType> orderTypes;
     
-    //Add data to vectors using push_back
-    prices.push_back(500.01);
-    amounts.push_back(0.001);
-    timestamps.push_back("2020/03/17 17:01:24.88449");
-    products.push_back("BTC/USDT");
-    orderTypes.push_back(OrderBookType::bid);
+//     //Add data to vectors using push_back
+//     prices.push_back(500.01);
+//     amounts.push_back(0.001);
+//     timestamps.push_back("2020/03/17 17:01:24.884492");
+//     products.push_back("BTC/USDT");
+//     orderTypes.push_back(OrderBookType::bid);
 
-    prices.push_back(1000.01);
-    amounts.push_back(0.001);
-    timestamps.push_back("2020/03/17 17:01:24.88449");
-    products.push_back("BTC/USDT");
-    orderTypes.push_back(OrderBookType::ask);
+//     prices.push_back(1000.01);
+//     amounts.push_back(0.001);
+//     timestamps.push_back("2020/03/17 17:01:24.88449");
+//     products.push_back("BTC/USDT");
+//     orderTypes.push_back(OrderBookType::ask);
 
-    //Accessing data in the vectors
-    std::cout <<"prices: " << prices[0] << std::endl;
-    std::cout <<"prices: " << prices[1] << std::endl;
+//     //Accessing data in the vectors
+//     std::cout <<"prices: " << prices[0] << std::endl;
+//     std::cout <<"prices: " << prices[1] << std::endl;
 
-    // while(true)
-    // {
-    //     printMenu();
+//     // while(true)
+//     // {
+//     //     printMenu();
 
-    //     int userOption = getUserOption();
+//     //     int userOption = getUserOption();
 
-    //     processUserOption(userOption);
-    // }
+//     //     processUserOption(userOption);
+//     // }
     
-    return 0;
-    
+//     return 0;  
+
+    OrderBookEntry order1; //create an instance of the class
+    order1.price = 10000;
+    order1.amount = 0.002;
+    order1.timestamp = "2020/03/17 17:01:24.884492";
+    order1.product = "BTC/USDT";
+    order1.orderType = OrderBookType::bid;
+
+    std::cout << "The price is " << order1.price << std::endl;
 
 }
