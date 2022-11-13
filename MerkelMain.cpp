@@ -1,5 +1,8 @@
 #include "MerkelMain.h"
 #include <iostream>
+#include <vector> 
+#include "OrderBookEntry.h"
+
 
 MerkelMain::MerkelMain()
 {
@@ -8,6 +11,7 @@ MerkelMain::MerkelMain()
 
 void MerkelMain::init()
 {
+    loadOrderBook();
     int input;
     while(true)
     {
@@ -17,12 +21,33 @@ void MerkelMain::init()
     }
 }
 
+void MerkelMain::loadOrderBook()
+{
+    
+        
+    
+    orders.push_back(   OrderBookEntry(1000, 
+                        0.02, 
+                        "17:01:24.884492",
+                        "BTC/USDT", 
+                        OrderBookType::bid)
+                    );
+
+    orders.push_back(   OrderBookEntry(2000, 
+                        0.04, 
+                        "17:01:24.884492",
+                        "BTC/USDT", 
+                        OrderBookType::ask)
+                    );
+
+}
+
 void MerkelMain::printMenu()
 {
     // 1 print help
     std::cout << "1: Print help " << std::endl;
     // 2 print exchange stats
-    std::cout << "2: Print exchange stats" << std::endl;
+    std::cout << "2: Print market stats" << std::endl;
     // 3 make an offer
     std::cout << "3: Make an offer " << std::endl;
     // 4 make a bid 
@@ -42,7 +67,7 @@ void MerkelMain::printHelp()
 
 void  MerkelMain::printMarketStats()
 {
-    std::cout << "Market looks good. " << std::endl;
+    std::cout << "OrderBook contains:  " << orders.size() << " entries." << std::endl;
 }
 
 void MerkelMain::enterOffer()
