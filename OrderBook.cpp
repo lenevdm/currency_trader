@@ -71,3 +71,8 @@ std::vector<OrderBookEntry> OrderBook::getOrders(  OrderBookType type,
     }
     return min;
  }
+
+ std::string OrderBook::getEarliestTime()
+ {
+    return orders[0].timestamp;
+ }
