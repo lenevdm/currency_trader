@@ -1,4 +1,7 @@
 #include "CSVReader.h"
+#include <iostream>
+#include <vector>
+#include <string>
 
 CSVReader::CSVReader()
 {
@@ -17,12 +20,12 @@ std::vector<std::string> CSVReader::tokenise(std::string csvLine, char separator
     return tokens;
 }
 
-
-OrderBookEntry CSVReader::stringstoOBE(std::vector<std::string> strings)
+OrderBookEntry CSVReader::stringsToOBE(std::vector<std::string> strings)
 {
     OrderBookEntry obe( 1,
                         1,
                         "",
                         "",
                         OrderBookType::bid);
+    return obe;
 }
