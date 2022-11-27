@@ -1,3 +1,7 @@
+//The OrderBookEntry represents a row in the order book data set 
+//(i.e. a single order in the order book). 
+//It can be a bid or an ask order.
+
 #pragma once
 
 #include <string>
