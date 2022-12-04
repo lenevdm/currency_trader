@@ -39,7 +39,7 @@ void MerkelMain::printMenu()
     // 2 print exchange stats
     std::cout << "2: Print market stats" << std::endl;
     // 3 make an offer
-    std::cout << "3: Make an offer " << std::endl;
+    std::cout << "3: Make an ask " << std::endl;
     // 4 make a bid 
     std::cout << "4: Make a bid " << std::endl;
     // 5 print wallet
@@ -88,14 +88,23 @@ void  MerkelMain::printMarketStats()
     // std::cout << "OrderBook asks: " << asks << " bids: " << bids << std::endl;
 }
 
-void MerkelMain::enterOffer()
+void MerkelMain::enterAsk()
 {
-    std::cout << "Mark and offer - enter the amount " << std::endl;
+    std::cout << "Make an ask - enter the amount: product, price, amount, eg. ETH/BTC,200,0.5" << std::endl;
+    std::string input;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::getline(std::cin, input);
+
+    
+
+    std::cout << "You typed: " << input << std::endl;
+
 }
 
 void MerkelMain::enterBid()
 {
-    std::cout << "Make a bid - enter the amount" << std::endl;
+    std::cout << "Make a bid - enter the amount: product, price, amount, eg. ETH/BTC,200,0.5" << std::endl;
+    
 }
 
 void MerkelMain::printWallet()
@@ -135,7 +144,7 @@ void MerkelMain::processUserOption(int userOption)
     }
     if (userOption == 3) // bad input
     {
-        enterOffer();
+        enterAsk();
     }
     if (userOption == 4) // bad input
     {
