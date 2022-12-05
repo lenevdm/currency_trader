@@ -95,3 +95,10 @@ std::vector<OrderBookEntry> OrderBook::getOrders(  OrderBookType type,
     }
     return next_timestamp;
  }
+
+ void OrderBook::insertOrder(OrderBookEntry& order)
+ {
+    orders.push_back(order); //drop the order onto the end
+    std::sort(orders.begin(), orders.end(), OrderBookEntry::compareByTimestamp);
+
+ }
