@@ -85,7 +85,7 @@ bool Wallet::canFulfillOrder(OrderBookEntry order)
     if (order.orderType == OrderBookType::bid)
     {
         double amount = order.amount * order.price;
-        std::string currency = currs[2];
+        std::string currency = currs[1];
         std::cout << "Wallet::canFulfillOrder " << currency << " : " << amount << std::endl;
         return containsCurrency(currency, amount);
     }
