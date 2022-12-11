@@ -8,13 +8,15 @@ OrderBookEntry::OrderBookEntry( double _price,
                         double _amount,
                         std::string _timestamp,
                         std::string _product,
-                        OrderBookType _orderType)
+                        OrderBookType _orderType,
+                        std::string _username)
 // Initializer list
 : price(_price), 
   amount(_amount), 
   timestamp(_timestamp),
   product(_product),
-  orderType(_orderType)
+  orderType(_orderType),
+  username(_username)
 {
     
 }
@@ -29,9 +31,13 @@ OrderBookType OrderBookEntry::stringToOrderBookType(std::string s)
   {
     return OrderBookType::bid;
   }
-  if (s == "sale")
+  if (s == "asksale")
   {
-    return OrderBookType::sale;
+    return OrderBookType::asksale;
+  }
+  if (s == "bidsale")
+  {
+    return OrderBookType::bidsale;
   }
   return OrderBookType::unknown;
 }
