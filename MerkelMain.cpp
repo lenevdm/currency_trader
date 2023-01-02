@@ -187,7 +187,7 @@ void MerkelMain::gotoNextTimeframe()
         std::cout << "Sale price: " << sale.price << " amount " << sale.amount << std::endl;
         if(sale.username == "simuser")
         {
-            //update the wallet
+            wallet.processSale(sale);
             
         }
 

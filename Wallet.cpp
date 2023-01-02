@@ -104,16 +104,21 @@ void Wallet::processSale(OrderBookEntry& sale)
         double incomingAmount = sale.amount * sale.price;
         std::string incomingCurrency = currs[1];
 
-        
+        currencies[incomingCurrency] += incomingAmount;
+        currencies[outgoingCurrency] -= outgoingAmount;
+
     }
 
     //bid
-    if (order.orderType == OrderBookType::bid)
+    if (sale.orderType == OrderBookType::bidsale)
     {
-        double amount = order.amount * order.price;
-        std::string currency = currs[1];
-        std::cout << "Wallet::canFulfillOrder " << currency << " : " << amount << std::endl;
-        return containsCurrency(currency, amount);
+        double incomingAmount = sale.amount;
+        std::string incomingCurrency = currs[0];
+        double outgoingAmount = sale.amount * sale.price;
+        std::string outgoingCurrency = currs[1];
+
+        currencies[incomingCurrency] += incomingAmount;
+        currencies[outgoingCurrency] -= outgoingAmount;
     }
-    return false;
+    
 }
