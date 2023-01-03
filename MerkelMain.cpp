@@ -73,22 +73,7 @@ void  MerkelMain::printMarketStats()
         std::cout << "Min ask: " << OrderBook::getLowPrice(entries) << std::endl;
 
     }
-    // std::cout << "OrderBook contains:  " << orders.size() << " entries." << std::endl;
-
-    // unsigned int bids = 0;
-    // unsigned int asks = 0;
-    // for (OrderBookEntry& e : orders)
-    // {
-    //     if (e.orderType == OrderBookType::ask)
-    //     {
-    //         asks ++;
-    //     }
-    //     if (e.orderType == OrderBookType::bid)
-    //     {
-    //         bids ++;
-    //     }
-    // }
-    // std::cout << "OrderBook asks: " << asks << " bids: " << bids << std::endl;
+    
 }
 
 void MerkelMain::enterAsk()
@@ -214,34 +199,39 @@ int MerkelMain::getUserOption()
     return userOption;
 }
 
+
+
 void MerkelMain::processUserOption(int userOption)
 {
     if (userOption == 0) // bad input
     {
-        std::cout << "Invalid choice. Choose 1-6" << std::endl;
+        std::cout << "Invalid choice. Choose 1-7" << std::endl;
     }
-    if (userOption == 1) // bad input
+    if (userOption == 1) 
     {
         printHelp();
     }
-    if (userOption == 2) // bad input
+    if (userOption == 2) 
     {
         printMarketStats();
     }
-    if (userOption == 3) // bad input
+    if (userOption == 3) 
     {
         enterAsk();
     }
-    if (userOption == 4) // bad input
+    if (userOption == 4) 
     {
         enterBid();
     }
-    if (userOption == 5) // bad input
+    if (userOption == 5)
     {
         printWallet();
     }
-    if (userOption == 6) // bad input
+    if (userOption == 6)
     {
         gotoNextTimeframe();
-    }       
+    }
+    if (userOption == 7)
+    
+   
 }
