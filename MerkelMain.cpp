@@ -8,6 +8,7 @@
 #include "CSVReader.h"
 
 bool show_main_menu = true;
+bool check_main_menu = true;
 
 MerkelMain::MerkelMain()
 {
@@ -27,8 +28,11 @@ void MerkelMain::init()
         {
             printMenu();
         }
+        if(check_main_menu)
+        {
+            input = getUserOption();
+        }
         
-        input = getUserOption();
         processUserOption(input);
     }
 }
@@ -190,6 +194,7 @@ void MerkelMain::gotoNextTimeframe()
  
 int MerkelMain::getUserOption()
 {
+    
     int userOption = 0;
     std::string line;
 
@@ -205,6 +210,8 @@ int MerkelMain::getUserOption()
     }
     std::cout << "You chose: " << userOption << std::endl;
     return userOption;
+
+    
 }
 
 
@@ -242,6 +249,7 @@ void MerkelMain::processUserOption(int userOption)
     {
         runAdvisorbot();
         show_main_menu = false;
+        check_main_menu = false;
     }
 }
 
@@ -254,7 +262,7 @@ int MerkelMain::runAdvisorbot()
     std::cout << "advisorbot> Please enter a command, or help for a list of commands" << std::endl;
     std::string input;
     std::cin >> input;
-    std::cout << "==========Advisorbot========== " << std::endl;
+    
 
     if (input == "help") 
     {
@@ -301,7 +309,7 @@ int MerkelMain::runAdvisorbot()
     } 
     else 
     {
-        //do something
+        std::cout << "advisorbot> That's an invalid command. Please try again :)" << std::endl;
     }
 
   return 0;
