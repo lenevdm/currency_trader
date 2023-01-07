@@ -251,8 +251,8 @@ int MerkelMain::runAdvisorbot()
 {
     // Enable the Advisorbot menu
     
-    std::string currentTimeBot;
-    currentTimeBot = orderBook.getEarliestTime();
+    std::string currentTime;
+    currentTime = orderBook.getEarliestTime();
 
     std::cout << "==========Advisorbot========== " << std::endl;
     std::cout << "advisorbot> Please enter a command, or type help" << std::endl;
@@ -335,11 +335,13 @@ int MerkelMain::runAdvisorbot()
     } 
     else if (input == "time") 
     {
-        std::cout << "advisorbot> " << currentTimeBot << std::endl;
+        std::cout << "advisorbot> " << currentTime << std::endl;
     } 
     else if (input == "step") 
     {
-        currentTimeBot = orderBook.getNextTime(currentTime);
+        currentTime = orderBook.getNextTime(currentTime);
+        std::cout << "advisorbot> New time is " << currentTime << std::endl;
+        return(stoi(currentTime));
     } 
     else 
     {
