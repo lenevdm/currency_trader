@@ -7,7 +7,7 @@
 #include "OrderBookEntry.h"
 #include "CSVReader.h"
 
-bool show_menu = true;
+bool show_main_menu = true;
 
 MerkelMain::MerkelMain()
 {
@@ -23,7 +23,7 @@ void MerkelMain::init()
 
     while(true)
     {
-        if(show_menu)
+        if(show_main_menu)
         {
             printMenu();
         }
@@ -56,7 +56,7 @@ void MerkelMain::printMenu()
     // 6 continue   
     std::cout << "6: Continue " << std::endl;
     // 7 advisorbot    
-    std::cout << "7: Use Advirsorbot" << std::endl;
+    std::cout << "7: Use Advisorbot" << std::endl;
     
     std::cout << "============================ " << std::endl;
 
@@ -241,7 +241,7 @@ void MerkelMain::processUserOption(int userOption)
     if (userOption == 7)
     {
         runAdvisorbot();
-        show_menu = false;
+        show_main_menu = false;
     }
 }
 
