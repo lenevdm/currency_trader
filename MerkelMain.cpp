@@ -37,6 +37,13 @@ void MerkelMain::init()
     }
 }
 
+// void MerkelMain::loadOrderBook()
+// {
+    
+//     // orders = CSVReader::readCSV("20200601.csv");
+
+// }
+
 
 void MerkelMain::printMenu()
 {
@@ -339,9 +346,8 @@ int MerkelMain::runAdvisorbot()
     } 
     else if (input == "step") 
     {
-        currentTime = orderBook.getNextTime(currentTime);
+        gotoNextTimeframe();
         std::cout << "advisorbot> New time is " << currentTime << std::endl;
-        return(stoi(currentTime));
     } 
     else 
     {
