@@ -25,9 +25,11 @@ class MerkelMain
         int getUserOption();
         void processUserOption(int userOption);
 
+        void runAdvisorbot();
+
         std::string currentTime;
 
-        OrderBook orderBook{"20200317.csv"};
+        OrderBook orderBook{"20200601.csv"};
 
         Wallet wallet;
 

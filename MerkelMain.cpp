@@ -37,6 +37,7 @@ void MerkelMain::init()
 
 void MerkelMain::printMenu()
 {
+    std::cout << "============================ " << std::endl;
     // 1 print help
     std::cout << "1: Print help " << std::endl;
     // 2 print exchange stats
@@ -49,8 +50,10 @@ void MerkelMain::printMenu()
     std::cout << "5: Print wallet " << std::endl;
     // 6 continue   
     std::cout << "6: Continue " << std::endl;
-
-    std::cout << "============== " << std::endl;
+    // 7 advisorbot    
+    std::cout << "7: Use Advirsorbot" << std::endl;
+    
+    std::cout << "============================ " << std::endl;
 
     std::cout << "Current time is: " << currentTime << std::endl;
 }
@@ -185,7 +188,7 @@ int MerkelMain::getUserOption()
     int userOption = 0;
     std::string line;
 
-    std::cout << "Type in 1-6" << std::endl;
+    std::cout << "Type in 1-7" << std::endl;
     std::getline(std::cin, line);
     
     try{
@@ -200,12 +203,11 @@ int MerkelMain::getUserOption()
 }
 
 
-
 void MerkelMain::processUserOption(int userOption)
 {
     if (userOption == 0) // bad input
     {
-        std::cout << "Invalid choice. Choose 1-7" << std::endl;
+        std::cout << "Invalid choice. Choose 1-14" << std::endl;
     }
     if (userOption == 1) 
     {
@@ -232,6 +234,13 @@ void MerkelMain::processUserOption(int userOption)
         gotoNextTimeframe();
     }
     if (userOption == 7)
-    
-   
+    {
+        runAdvisorbot();
+    }
+}
+
+void MerkelMain::runAdvisorbot()
+{
+    std::cout << "Welcome to Advisorbot" << std::endl;
+    std::cout << "Please enter a command, or help for a list of commands" << std::endl;
 }
