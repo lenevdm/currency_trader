@@ -258,26 +258,64 @@ int MerkelMain::runAdvisorbot()
     // Enable the Advisorbot menu
     
     std::cout << "==========Advisorbot========== " << std::endl;
-    std::cout << "advisorbot> Welcome to Advisorbot" << std::endl;
-    std::cout << "advisorbot> Please enter a command, or help for a list of commands" << std::endl;
+    std::cout << "advisorbot> Hi, I'm Advisorbot!" << std::endl;
+    std::cout << "advisorbot> Please enter a command, or type help" << std::endl;
     std::string input;
     std::cin >> input;
     
 
     if (input == "help") 
     {
-        std::cout << "help <cmd>    | Displays help for a specific command." << std::endl;
-        std::cout << "prod          | Displays a list of all available products on the currency exchange." << std::endl;
-        std::cout << "min           | Finds the minimum bid or ask for the product in the current time step." << std::endl;
-        std::cout << "max           | Finds the maximum bid or ask for the product in the current time step." << std::endl;
-        std::cout << "avg           | Computes the average ask or bid for the selected product over the selected number of timesteps." << std::endl;
-        std::cout << "predict       | Predicts the minimum or maximum ask or bid for the sent product for the next time step." << std::endl;
-        std::cout << "time          | States the current time step in the dataset of the currency exchange." << std::endl;
-        std::cout << "step          | Move to the next time step of the dataset." << std::endl;
+        std::cout << "advisorbot> help_<cmd>    | Displays help for a specific command." << std::endl;
+        std::cout << "advisorbot> prod          | Displays a list of all available products on the currency exchange." << std::endl;
+        std::cout << "advisorbot> min           | Finds the minimum bid or ask for the product in the current time step." << std::endl;
+        std::cout << "advisorbot> max           | Finds the maximum bid or ask for the product in the current time step." << std::endl;
+        std::cout << "advisorbot> avg           | Computes the average ask or bid for the selected product over the selected number of timesteps." << std::endl;
+        std::cout << "advisorbot> predict       | Predicts the minimum or maximum ask or bid for the sent product for the next time step." << std::endl;
+        std::cout << "advisorbot> time          | States the current time step in the dataset of the currency exchange." << std::endl;
+        std::cout << "advisorbot> step          | Move to the next time step of the dataset." << std::endl;
     } 
-    else if (input == "help <cmd>") 
+    else if (input == "help_prod") 
     {
-        //do something
+        std::cout << "advisorbot> format: prod" << std::endl;
+        std::cout << "advisorbot> example command: prod" << std::endl;
+        std::cout << "advisorbot> example result: ETH/BTC, DOGE/BTC" << std::endl;
+    } 
+    else if (input == "help_min") 
+    {
+        std::cout << "advisorbot> format: min product ask/bid" << std::endl;
+        std::cout << "advisorbot> example command: min ETH/BTC ask" << std::endl;
+        std::cout << "advisorbot> example result: The minimum ask for ETH/BTC is 1.0" << std::endl;
+    } 
+    else if (input == "help_max") 
+    {
+        std::cout << "advisorbot> format: max product ask/bid" << std::endl;
+        std::cout << "advisorbot> example command: max ETH/BTC ask" << std::endl;
+        std::cout << "advisorbot> example result: The maximum ask for ETH/BTC is 2.0" << std::endl;
+    } 
+    else if (input == "help_avg") 
+    {
+        std::cout << "advisorbot> format: avg product ask/bid timesteps" << std::endl;
+        std::cout << "advisorbot> example command: avg ETH/TBC ask 10" << std::endl;
+        std::cout << "advisorbot> example result: The average ETH/BTC ask price over the last 10 timesteps was 1.0" << std::endl;
+    } 
+    else if (input == "help_predict") 
+    {
+        std::cout << "advisorbot> format: predict max/min product ask/bid" << std::endl;
+        std::cout << "advisorbot> example command: predict max ETH/BTC bid" << std::endl;
+        std::cout << "advisorbot> example result: The predicted maximum ETH/BTC bid price for the next step is 1.2" << std::endl;
+    } 
+    else if (input == "help_time") 
+    {
+        std::cout << "advisorbot> format: time" << std::endl;
+        std::cout << "advisorbot> example command: time" << std::endl;
+        std::cout << "advisorbot> example result: 2020/03/17 17:01:24" << std::endl;
+    } 
+    else if (input == "help_step") 
+    {
+        std::cout << "advisorbot> format: step" << std::endl;
+        std::cout << "advisorbot> example command: step" << std::endl;
+        std::cout << "advisorbot> example result: Now at 2020/03/17 17:01:30" << std::endl;
     } 
     else if (input == "prod") 
     {
