@@ -37,12 +37,6 @@ void MerkelMain::init()
     }
 }
 
-// void MerkelMain::loadOrderBook()
-// {
-    
-//     // orders = CSVReader::readCSV("20200317.csv");
-
-// }
 
 void MerkelMain::printMenu()
 {
@@ -257,8 +251,10 @@ int MerkelMain::runAdvisorbot()
 {
     // Enable the Advisorbot menu
     
+    std::string currentTimeBot;
+    currentTimeBot = orderBook.getEarliestTime();
+
     std::cout << "==========Advisorbot========== " << std::endl;
-    std::cout << "advisorbot> Hi, I'm Advisorbot!" << std::endl;
     std::cout << "advisorbot> Please enter a command, or type help" << std::endl;
     std::string input;
     std::cin >> input;
@@ -339,11 +335,11 @@ int MerkelMain::runAdvisorbot()
     } 
     else if (input == "time") 
     {
-        //do something
+        std::cout << "advisorbot> " << currentTimeBot << std::endl;
     } 
     else if (input == "step") 
     {
-        //do something
+        currentTimeBot = orderBook.getNextTime(currentTime);
     } 
     else 
     {
