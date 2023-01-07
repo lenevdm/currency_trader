@@ -7,6 +7,7 @@
 #include "OrderBookEntry.h"
 #include "CSVReader.h"
 
+bool show_menu = true;
 
 MerkelMain::MerkelMain()
 {
@@ -22,7 +23,11 @@ void MerkelMain::init()
 
     while(true)
     {
-        printMenu();
+        if(show_menu)
+        {
+            printMenu();
+        }
+        
         input = getUserOption();
         processUserOption(input);
     }
@@ -207,7 +212,7 @@ void MerkelMain::processUserOption(int userOption)
 {
     if (userOption == 0) // bad input
     {
-        std::cout << "Invalid choice. Choose 1-14" << std::endl;
+        std::cout << "Invalid choice. Choose 1-7 or Advisorbot commands" << std::endl;
     }
     if (userOption == 1) 
     {
@@ -236,11 +241,68 @@ void MerkelMain::processUserOption(int userOption)
     if (userOption == 7)
     {
         runAdvisorbot();
+        show_menu = false;
     }
 }
 
-void MerkelMain::runAdvisorbot()
+int MerkelMain::runAdvisorbot()
 {
-    std::cout << "Welcome to Advisorbot" << std::endl;
-    std::cout << "Please enter a command, or help for a list of commands" << std::endl;
+    // Enable the Advisorbot menu
+    
+    std::cout << "==========Advisorbot========== " << std::endl;
+    std::cout << "advisorbot> Welcome to Advisorbot" << std::endl;
+    std::cout << "advisorbot> Please enter a command, or help for a list of commands" << std::endl;
+    std::string input;
+    std::cin >> input;
+    std::cout << "==========Advisorbot========== " << std::endl;
+
+    if (input == "help") 
+    {
+        std::cout << "help <cmd>    | Displays help for a specific command." << std::endl;
+        std::cout << "prod          | Displays a list of all available products on the currency exchange." << std::endl;
+        std::cout << "min           | Finds the minimum bid or ask for the product in the current time step." << std::endl;
+        std::cout << "max           | Finds the maximum bid or ask for the product in the current time step." << std::endl;
+        std::cout << "avg           | Computes the average ask or bid for the selected product over the selected number of timesteps." << std::endl;
+        std::cout << "predict       | Predicts the minimum or maximum ask or bid for the sent product for the next time step." << std::endl;
+        std::cout << "time          | States the current time step in the dataset of the currency exchange." << std::endl;
+        std::cout << "step          | Move to the next time step of the dataset." << std::endl;
+    } 
+    else if (input == "help <cmd>") 
+    {
+        //do something
+    } 
+    else if (input == "prod") 
+    {
+        //do something
+    } 
+    else if (input == "min") 
+    {
+        //do something
+    } 
+    else if (input == "max") 
+    {
+        //do something
+    } 
+    else if (input == "avg") 
+    {
+        //do something
+    } 
+    else if (input == "predict") 
+    {
+        //do something
+    } 
+    else if (input == "time") 
+    {
+        //do something
+    } 
+    else if (input == "step") 
+    {
+        //do something
+    } 
+    else 
+    {
+        //do something
+    }
+
+  return 0;
 }

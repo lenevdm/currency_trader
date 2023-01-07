@@ -25,7 +25,8 @@ class MerkelMain
         int getUserOption();
         void processUserOption(int userOption);
 
-        void runAdvisorbot();
+        int runAdvisorbot();
+        
 
         std::string currentTime;
 
