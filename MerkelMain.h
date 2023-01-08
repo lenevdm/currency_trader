@@ -6,6 +6,8 @@
 #include "OrderBookEntry.h"
 #include "OrderBook.h"
 #include "Wallet.h"
+#include "CSVReader.h"
+
 
 class MerkelMain
 {
