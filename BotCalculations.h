@@ -11,7 +11,7 @@ class BotCalculations
     public:
         BotCalculations();
 
-        std::string getProducts();
+        std::vector<std::string> getUniqueProducts(const std::string& fileName); 
         
         int getMinimum();
         int getMaximum();

@@ -7,6 +7,12 @@
 #include "OrderBookEntry.h"
 #include "CSVReader.h"
 #include "CSVReader.h"
+#include "BotCalculations.h"
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <unordered_set>
+#include <set>
 
 bool show_main_menu = true;
 bool check_main_menu = true;
@@ -288,14 +294,14 @@ int MerkelMain::runAdvisorbot()
     else if (input == "help_min") 
     {
         std::cout << "advisorbot> format: min product ask/bid" << std::endl;
-        std::cout << "advisorbot> example command: min ETH/BTC ask" << std::endl;
-        std::cout << "advisorbot> example result: The minimum ask for ETH/BTC is 1.0" << std::endl;
+        std::cout << "advisorbot> example command: min_bid" << std::endl;
+        std::cout << "advisorbot> example result: Product: BTC/USDT Min bid: 9590" << std::endl;
     } 
     else if (input == "help_max") 
     {
-        std::cout << "advisorbot> format: max product ask/bid" << std::endl;
-        std::cout << "advisorbot> example command: max ETH/BTC ask" << std::endl;
-        std::cout << "advisorbot> example result: The maximum ask for ETH/BTC is 2.0" << std::endl;
+        std::cout << "advisorbot> format: max_<ask/bid>" << std::endl;
+        std::cout << "advisorbot> example command: max_ask" << std::endl;
+        std::cout << "advisorbot> example result: Product: BTC/USDT Max ask: 9590" << std::endl;
     } 
     else if (input == "help_avg") 
     {
@@ -323,16 +329,60 @@ int MerkelMain::runAdvisorbot()
     } 
     else if (input == "prod") 
     {
-        //do something
+        std::cout << "advisorbot> The available producst are: " << std::endl;
+        for(std::string const& p : orderBook.getKnownProducts())
+        {
+            std::cout << "advisorbot> " << p << std::endl;
+        }
     } 
-    else if (input == "min") 
+    else if (input == "min_ask") 
     {
-        //do something
+        for(std::string const& p : orderBook.getKnownProducts())
+        {
+            std::cout << "Product: " << p << std::endl;
+            std::vector<OrderBookEntry> entries = orderBook.getOrders(  OrderBookType::ask, 
+                                                                        p, 
+                                                                        currentTime);
+            std::cout << "Min ask: " << OrderBook::getLowPrice(entries) << std::endl;
+
+        }
     } 
-    else if (input == "max") 
+    else if (input == "min_bid") 
     {
-        //do something
+        for(std::string const& p : orderBook.getKnownProducts())
+        {
+            std::cout << "Product: " << p << std::endl;
+            std::vector<OrderBookEntry> entries = orderBook.getOrders(  OrderBookType::bid, 
+                                                                        p, 
+                                                                        currentTime);
+            std::cout << "Min bid: " << OrderBook::getLowPrice(entries) << std::endl;
+
+        }
     } 
+    else if (input == "max_bid") 
+    {
+        for(std::string const& p : orderBook.getKnownProducts())
+        {
+            std::cout << "Product: " << p << std::endl;
+            std::vector<OrderBookEntry> entries = orderBook.getOrders(  OrderBookType::bid, 
+                                                                        p, 
+                                                                        currentTime);
+            std::cout << "Max bid: " << OrderBook::getHighPrice(entries) << std::endl;
+
+        }
+    } 
+    else if (input == "max_ask") 
+    {
+        for(std::string const& p : orderBook.getKnownProducts())
+        {
+            std::cout << "Product: " << p << std::endl;
+            std::vector<OrderBookEntry> entries = orderBook.getOrders(  OrderBookType::ask, 
+                                                                        p, 
+                                                                        currentTime);
+            std::cout << "Max ask: " << OrderBook::getHighPrice(entries) << std::endl;
+
+        }
+    }
     else if (input == "avg") 
     {
         //do something

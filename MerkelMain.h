@@ -27,6 +27,7 @@ class MerkelMain
         int getUserOption();
         void processUserOption(int userOption);
 
+        
         int runAdvisorbot();
         
 
