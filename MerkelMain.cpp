@@ -31,10 +31,12 @@ void MerkelMain::init()
 
     while(true)
     {
+        //Display main menu if Advisorbot is not running
         if(show_main_menu)
         {
             printMenu();
         }
+        //Perform main menu input checking if Advisorbot is not running
         if(check_main_menu)
         {
             input = getUserOption();
@@ -54,25 +56,20 @@ void MerkelMain::init()
 
 void MerkelMain::printMenu()
 {
-    std::cout << "============================ " << std::endl;
-    // 1 print help
-    std::cout << "1: Print help " << std::endl;
-    // 2 print exchange stats
-    std::cout << "2: Print market stats" << std::endl;
-    // 3 make an offer
-    std::cout << "3: Make an ask " << std::endl;
-    // 4 make a bid 
-    std::cout << "4: Make a bid " << std::endl;
-    // 5 print wallet
-    std::cout << "5: Print wallet " << std::endl;
-    // 6 continue   
-    std::cout << "6: Continue " << std::endl;
-    // 7 advisorbot    
-    std::cout << "7: Use Advisorbot" << std::endl;
+    std::stringstream menu;
     
-    std::cout << "============================ " << std::endl;
+    menu << "============================ " << std::endl;
+    menu << "1: Print help " << std::endl;
+    menu << "2: Print market stats" << std::endl;
+    menu << "3: Make an ask " << std::endl;
+    menu << "4: Make a bid " << std::endl;
+    menu << "5: Print wallet " << std::endl;
+    menu << "6: Continue " << std::endl;
+    menu << "7: Use Advisorbot" << std::endl;
+    menu << "============================ " << std::endl;
+    menu << "Current time is: " << currentTime << std::endl;
 
-    std::cout << "Current time is: " << currentTime << std::endl;
+    std::cout << menu.str();
 }
 
 void MerkelMain::printHelp()
@@ -255,16 +252,19 @@ void MerkelMain::processUserOption(int userOption)
     }
     if (userOption == 7)
     {
+        // Enable the Advisorbot menu
         runAdvisorbot();
-        show_main_menu = false;
-        check_main_menu = false;
     }
 }
 
 int MerkelMain::runAdvisorbot()
 {
-    // Enable the Advisorbot menu
     
+    //Prevent the main menu from being printed when using the bot
+    show_main_menu = false;
+    //Prevent the main menu checking from happening
+    check_main_menu = false;
+
     std::string currentTime;
     currentTime = orderBook.getEarliestTime();
 
@@ -284,6 +284,7 @@ int MerkelMain::runAdvisorbot()
         std::cout << "advisorbot> predict       | Predicts the minimum or maximum ask or bid for the sent product for the next time step." << std::endl;
         std::cout << "advisorbot> time          | States the current time step in the dataset of the currency exchange." << std::endl;
         std::cout << "advisorbot> step          | Move to the next time step of the dataset." << std::endl;
+        std::cout << "advisorbot> exit          | Go back to the Merkelrex main menu." << std::endl;
     } 
     else if (input == "help_prod") 
     {
@@ -385,11 +386,11 @@ int MerkelMain::runAdvisorbot()
     }
     else if (input == "avg") 
     {
-        //do something
+        std::cout << "advisorbot> I don't know how to do that yet. Check back later :)" << std::endl;
     } 
     else if (input == "predict") 
     {
-        //do something
+        std::cout << "advisorbot> I don't know how to do that yet. Check back later :)" << std::endl;
     } 
     else if (input == "time") 
     {
@@ -400,8 +401,19 @@ int MerkelMain::runAdvisorbot()
         gotoNextTimeframe();
         std::cout << "advisorbot> New time is " << currentTime << std::endl;
     } 
+    else if (input == "exit") 
+    {
+        std::cout << "advisorbot> Goodbye! " << currentTime << std::endl;
+        //Show the main menu again
+        show_main_menu = true;
+        //Enable main menu checking
+        check_main_menu = true;
+        //Break out of the runAdvisorbot function.
+        return 0;
+    } 
     else 
     {
+        //Basic error handling.
         std::cout << "advisorbot> That's an invalid command. Please try again :)" << std::endl;
     }
 
