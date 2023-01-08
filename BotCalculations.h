@@ -10,7 +10,15 @@ class BotCalculations
 {
     public:
         BotCalculations();
+
+        std::string getProducts();
         
+        int getMinimum();
+        int getMaximum();
+
+        //getAverage();
+
+        //getPrediction();
 
     private: 
     
